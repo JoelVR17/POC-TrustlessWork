@@ -4,11 +4,6 @@ import { useWalletStore } from "@/store/walletStore";
 import { useWallet } from "@/wallet/hooks/useWallet.hook";
 import ThemeToggle from "./ThemeToggle";
 import { FaUserCircle } from "react-icons/fa";
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -17,6 +12,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import ItemsHeader from "./ItemsHeader";
 
 const Header = () => {
   const { connectWallet, disconnectWallet } = useWallet();
@@ -48,35 +44,13 @@ const Header = () => {
       </Link>
 
       {/* Navigation Menu */}
-      {address && (
-        <NavigationMenu className="mx-auto md:m-0">
-          <NavigationMenuList className="flex gap-10">
-            <NavigationMenuItem>
-              <Link href="/escrow/initialize-escrow" passHref>
-                Create Escrow
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/escrow/fund-escrow" passHref>
-                Fund Escrow
-              </Link>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-      )}
+      <ItemsHeader isEnabled={address} />
 
       {/* Wallet and Theme Toggle */}
       <div className="flex mx-auto md:m-0 items-center gap-5">
         <ThemeToggle />
         {address ? (
           <>
-            <button
-              type="button"
-              onClick={handleDisconnect}
-              className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-3 text-center me-2 mb-2"
-            >
-              Disconnect
-            </button>
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
@@ -87,6 +61,13 @@ const Header = () => {
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
+            <button
+              type="button"
+              onClick={handleDisconnect}
+              className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-3 text-center"
+            >
+              Disconnect
+            </button>
           </>
         ) : (
           <button

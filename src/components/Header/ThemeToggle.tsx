@@ -20,9 +20,9 @@ export default function ThemeToggle() {
   return (
     <button onClick={toggleTheme}>
       {theme === "dark" ? (
-        <MdOutlineLightMode size={25} />
+        <MdOutlineLightMode size={30} />
       ) : (
-        <MdNightlightRound size={25} />
+        <MdNightlightRound size={30} />
       )}
     </button>
   );
