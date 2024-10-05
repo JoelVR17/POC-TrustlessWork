@@ -1,6 +1,5 @@
 "use client";
 
-import { useToast } from "@/hooks/use-toast";
 import { useWalletStore } from "@/store/walletStore";
 import { useWallet } from "@/wallet/hooks/useWallet.hook";
 import ThemeToggle from "./ThemeToggle";
@@ -52,7 +51,7 @@ const Header = () => {
       <NavigationMenu className="mx-auto md:m-0">
         <NavigationMenuList className="flex gap-10">
           <NavigationMenuItem>
-            <Link href="/escrow/create-escrow" passHref>
+            <Link href="/escrow/initialize-escrow" passHref>
               Create Escrow
             </Link>
           </NavigationMenuItem>
