@@ -2,15 +2,18 @@ import { ReactNode } from "react";
 
 type BoundedProps = {
   children: ReactNode;
+  center?: boolean;
 };
 
-const Bounded = ({ children }: BoundedProps) => {
+const Bounded = ({ children, center }: BoundedProps) => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] min-h-screen px-20 my-10 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 sm:items-start">
-        {children}
-      </main>
-    </div>
+    <main
+      className={`flex px-20 my-20 font-[family-name:var(--font-geist-sans)] ${
+        center && "justify-center"
+      }`}
+    >
+      {children}
+    </main>
   );
 };
 

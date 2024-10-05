@@ -42,7 +42,10 @@ export function FundEscrowForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-1/3">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col space-y-6"
+      >
         <FormField
           control={form.control}
           name="engagementId"
@@ -60,7 +63,9 @@ export function FundEscrowForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button className="w-1/4" type="submit">
+          Fund Escrow
+        </Button>
       </form>
     </Form>
   );

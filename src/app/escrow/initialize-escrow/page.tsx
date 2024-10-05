@@ -6,15 +6,15 @@ import WithAuthProtect from "@/constants/helpers/WithAuth";
 
 const CreateEscrow = () => {
   return (
-    <Bounded>
-      <div className="flex flex-col gap-3">
-        <h1 className="text-4xl font-bold">Create an Escrow</h1>
+    <Bounded center={true}>
+      <div className="flex flex-col gap-3 w-1/3">
+        <h1 className="text-4xl font-bold">Fund an Escrow</h1>
         <h2>
           Fill in the details below to set up a secure and reliable escrow
           agreement.
         </h2>
+        <InitializeEscrowForm />
       </div>
-      <InitializeEscrowForm />
     </Bounded>
   );
 };
