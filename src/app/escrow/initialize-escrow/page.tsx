@@ -1,5 +1,5 @@
 import Bounded from "@/components/Bounded";
-import { EscrowCreateForm } from "@/components/modules/escrow/CreateEscrowForm";
+import { InitializeEscrowForm } from "@/components/modules/escrow/InitializeEscrowForm";
 
 const CreateEscrow = () => {
   return (
@@ -11,7 +11,7 @@ const CreateEscrow = () => {
           agreement.
         </h2>
       </div>
-      <EscrowCreateForm />
+      <InitializeEscrowForm />
     </Bounded>
   );
 };
