@@ -3,7 +3,8 @@ import { devtools, persist } from "zustand/middleware";
 
 type WalletState = {
   address: string;
-  connectWalletStore: (address: string) => void;
+  name: string;
+  connectWalletStore: (address: string, name: string) => void;
   disconnectWalletStore: () => void;
 };
 
@@ -12,8 +13,10 @@ export const useWalletStore = create<WalletState>()(
     persist(
       (set) => ({
         address: "",
-        connectWalletStore: (address: string) => set({ address }),
-        disconnectWalletStore: () => set({ address: "" }),
+        name: "",
+        connectWalletStore: (address: string, name: string) =>
+          set({ address, name }),
+        disconnectWalletStore: () => set({ address: "", name: "" }),
       }),
       {
         name: "address-wallet",

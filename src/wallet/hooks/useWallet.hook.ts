@@ -23,7 +23,9 @@ export const useWallet = () => {
         kit.setWallet(option.id);
 
         const { address } = await kit.getAddress();
-        connectWalletStore(address);
+        const { name } = option;
+
+        connectWalletStore(address, name);
       },
     });
   };

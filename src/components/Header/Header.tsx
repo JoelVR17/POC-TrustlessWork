@@ -16,7 +16,7 @@ import ItemsHeader from "./ItemsHeader";
 
 const Header = () => {
   const { connectWallet, disconnectWallet } = useWallet();
-  const { address } = useWalletStore();
+  const { address, name } = useWalletStore();
 
   const handleConnect = async () => {
     try {
@@ -57,7 +57,9 @@ const Header = () => {
                   <FaUserCircle size={30} />
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p className="text-base">{address && address}</p>
+                  <p className="text-base">
+                    {address && name + " - " + address}
+                  </p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -73,7 +75,7 @@ const Header = () => {
           <button
             type="button"
             onClick={handleConnect}
-            className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-3 text-center me-2 mb-2"
+            className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-3 text-center"
           >
             Connect
           </button>
