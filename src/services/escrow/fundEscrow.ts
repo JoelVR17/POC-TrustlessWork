@@ -8,7 +8,10 @@ interface EscrowPayload {
 
 export const fundEscrow = async (payload: EscrowPayload) => {
   try {
-    const response = await axios.post(`${API_URL}/escrow/fund-escrow`, payload);
+    const response = await axios.post(
+      `${API_URL}/engagement/fund-escrow`,
+      payload
+    );
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
