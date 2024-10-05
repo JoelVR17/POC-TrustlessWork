@@ -1,4 +1,5 @@
-import { MdOutlineLightMode, MdNightlightRound } from "react-icons/md";
+import { MdOutlineLightMode } from "react-icons/md";
+import { LuMoonStar } from "react-icons/lu";
 import { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
@@ -20,9 +21,9 @@ export default function ThemeToggle() {
   return (
     <button onClick={toggleTheme}>
       {theme === "dark" ? (
-        <MdOutlineLightMode size={30} />
+        <MdOutlineLightMode className="text-yellow-700" size={30} />
       ) : (
-        <MdNightlightRound size={30} />
+        <LuMoonStar className="text-gray-700" size={30} />
       )}
     </button>
   );
