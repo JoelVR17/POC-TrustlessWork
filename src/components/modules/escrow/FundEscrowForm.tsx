@@ -63,7 +63,7 @@ export function FundEscrowForm() {
             </FormItem>
           )}
         />
-        <Button className="w-1/4" type="submit">
+        <Button className="w-full md:w-1/4" type="submit">
           Fund Escrow
         </Button>
       </form>
