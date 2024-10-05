@@ -48,20 +48,22 @@ const Header = () => {
       </Link>
 
       {/* Navigation Menu */}
-      <NavigationMenu className="mx-auto md:m-0">
-        <NavigationMenuList className="flex gap-10">
-          <NavigationMenuItem>
-            <Link href="/escrow/initialize-escrow" passHref>
-              Create Escrow
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/escrow/fund-escrow" passHref>
-              Fund Escrow
-            </Link>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
+      {address && (
+        <NavigationMenu className="mx-auto md:m-0">
+          <NavigationMenuList className="flex gap-10">
+            <NavigationMenuItem>
+              <Link href="/escrow/initialize-escrow" passHref>
+                Create Escrow
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/escrow/fund-escrow" passHref>
+                Fund Escrow
+              </Link>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      )}
 
       {/* Wallet and Theme Toggle */}
       <div className="flex mx-auto md:m-0 items-center gap-5">

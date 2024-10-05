@@ -1,6 +1,8 @@
+"use client";
+
 import Bounded from "@/components/Bounded";
 import { FundEscrowForm } from "@/components/modules/escrow/FundEscrowForm";
-import React from "react";
+import WithAuthProtect from "@/constants/helpers/WithAuth";
 
 const FundEscrow = () => {
   return (
@@ -14,4 +16,4 @@ const FundEscrow = () => {
   );
 };
 
-export default FundEscrow;
+export default WithAuthProtect(FundEscrow);

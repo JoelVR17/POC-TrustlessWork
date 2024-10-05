@@ -1,5 +1,8 @@
+"use client";
+
 import Bounded from "@/components/Bounded";
 import { InitializeEscrowForm } from "@/components/modules/escrow/InitializeEscrowForm";
+import WithAuthProtect from "@/constants/helpers/WithAuth";
 
 const CreateEscrow = () => {
   return (
@@ -16,4 +19,4 @@ const CreateEscrow = () => {
   );
 };
 
-export default CreateEscrow;
+export default WithAuthProtect(CreateEscrow);
