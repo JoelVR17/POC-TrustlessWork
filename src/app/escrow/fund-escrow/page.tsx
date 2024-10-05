@@ -1,5 +1,5 @@
 import Bounded from "@/components/Bounded";
-import { EscrowFundForm } from "@/components/modules/escrow/FundEscrowForm";
+import { FundEscrowForm } from "@/components/modules/escrow/FundEscrowForm";
 import React from "react";
 
 const FundEscrow = () => {
@@ -9,7 +9,7 @@ const FundEscrow = () => {
         <h1 className="text-4xl font-bold">Fund an Escrow</h1>
         <h2>Fill in the details below to fund an escrow.</h2>
       </div>
-      <EscrowFundForm />
+      <FundEscrowForm />
     </Bounded>
   );
 };
