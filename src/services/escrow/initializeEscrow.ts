@@ -13,10 +13,10 @@ interface EscrowPayload {
 export const initializeEscrow = async (payload: EscrowPayload) => {
   try {
     const response = await axios.post(
-      `${API_URL}/engagement/initialize-escrow`,
+      `${API_URL}/escrow/initialize-escrow`,
       payload
     );
-    return response.data;
+    return response;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.error("Error:", error.message);

@@ -1,9 +1,5 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -15,42 +11,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { initializeEscrow } from "@/services/escrow/initializeEscrow";
-import { useWalletStore } from "@/store/walletStore";
-
-const formSchema = z.object({
-  engagementId: z.string().min(5, {
-    message: "Engagement must be at least 5 characters.",
-  }),
-  description: z.string().min(10, {
-    message: "Description must be at least 10 characters.",
-  }),
-  serviceProvider: z.string().min(1, {
-    message: "Service provider is required.",
-  }),
-  amount: z.string().min(1, {
-    message: "Amount is required.",
-  }),
-});
+import { useEscrowHook } from "./hooks/initialize-escrow.hook";
+import { useLoaderStore } from "@/store/utilsStore/store";
 
 export function InitializeEscrowForm() {
-  const { address } = useWalletStore();
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      engagementId: "",
-      description: "",
-      serviceProvider: "",
-      amount: "",
-    },
-  });
-
-  const onSubmit = async (payload: z.infer<typeof formSchema>) => {
-    // Insert the signer through zustand state
-    const data = { ...payload, signer: address };
-    const response = await initializeEscrow(data);
-  };
+  const { form, onSubmit } = useEscrowHook();
 
   return (
     <Form {...form}>
@@ -99,7 +64,7 @@ export function InitializeEscrowForm() {
                 <Input placeholder="Enter the service provider" {...field} />
               </FormControl>
               <FormDescription>
-                Please enter the wallet of service provider
+                Please enter the wallet of the service provider.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -118,7 +83,7 @@ export function InitializeEscrowForm() {
                 />
               </FormControl>
               <FormDescription>
-                Please enter the amount/price of the escrow
+                Please enter the amount/price of the escrow.
               </FormDescription>
               <FormMessage />
             </FormItem>
