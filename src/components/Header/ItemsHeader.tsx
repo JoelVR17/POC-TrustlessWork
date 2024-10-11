@@ -1,4 +1,4 @@
-import { usePathname } from "next/navigation"; // Importar usePathname
+import { usePathname } from "next/navigation";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -11,9 +11,8 @@ type ItemsHeaderProps = {
 };
 
 const ItemsHeader = ({ isEnabled }: ItemsHeaderProps) => {
-  const pathname = usePathname(); // Obtener la ruta actual
+  const pathname = usePathname();
 
-  // Función para verificar si la ruta es activa
   const isActive = (path: string) => pathname === path;
 
   return (
@@ -30,7 +29,7 @@ const ItemsHeader = ({ isEnabled }: ItemsHeaderProps) => {
               }
               passHref
             >
-              Create Escrow
+              Initialize Escrow
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
