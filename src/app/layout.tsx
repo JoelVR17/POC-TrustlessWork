@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Header from "@/components/Header/Header";
+import Header from "@/components/header/Header";
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,8 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "POC Stellar",
-  description: "POC Stellar",
+  title: "Trustless Work",
+  description: "Trustless Work",
 };
 
 export default function RootLayout({
@@ -32,6 +33,7 @@ export default function RootLayout({
         <Header />
         {children}
         <footer></footer>
+        <Toaster />
       </body>
     </html>
   );
