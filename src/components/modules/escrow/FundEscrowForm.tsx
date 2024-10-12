@@ -1,9 +1,5 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -15,30 +11,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useWalletStore } from "@/store/walletStore";
-import { fundEscrow } from "@/services/escrow/fundEscrow";
-
-const formSchema = z.object({
-  engagementId: z.string().min(5, {
-    message: "Engagement must be at least 5 characters.",
-  }),
-});
+import { useFundEscrowHook } from "./hooks/fund-escrow.hook";
 
 export function FundEscrowForm() {
-  const { address } = useWalletStore();
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      engagementId: "",
-    },
-  });
-
-  const onSubmit = async (payload: z.infer<typeof formSchema>) => {
-    // Insert the signer through zustand state
-    const data = { ...payload, signer: address };
-    const response = await fundEscrow(data);
-  };
+  const { onSubmit, form } = useFundEscrowHook();
 
   return (
     <Form {...form}>

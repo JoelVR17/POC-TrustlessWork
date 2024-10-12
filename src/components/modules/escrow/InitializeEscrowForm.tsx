@@ -11,11 +11,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useEscrowHook } from "./hooks/initialize-escrow.hook";
-import { useLoaderStore } from "@/store/utilsStore/store";
+import { useInitializeEscrowHook } from "./hooks/initialize-escrow.hook";
 
 export function InitializeEscrowForm() {
-  const { form, onSubmit } = useEscrowHook();
+  const { form, onSubmit } = useInitializeEscrowHook();
 
   return (
     <Form {...form}>

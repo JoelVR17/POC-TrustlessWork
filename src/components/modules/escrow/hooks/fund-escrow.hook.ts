@@ -1,9 +1,8 @@
 import { useToast } from "@/hooks/use-toast";
-import { initializeEscrow } from "@/services/escrow/initializeEscrow";
+import { fundEscrow } from "@/services/escrow/fundEscrow";
 import { useLoaderStore } from "@/store/utilsStore";
 import { useWalletStore } from "@/store/walletStore";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -11,18 +10,9 @@ const formSchema = z.object({
   engagementId: z.string().min(5, {
     message: "Engagement must be at least 5 characters.",
   }),
-  description: z.string().min(10, {
-    message: "Description must be at least 10 characters.",
-  }),
-  serviceProvider: z.string().min(1, {
-    message: "Service provider is required.",
-  }),
-  amount: z.string().min(1, {
-    message: "Amount is required.",
-  }),
 });
 
-export const useInitializeEscrowHook = () => {
+export const useFundEscrowHook = () => {
   const { address } = useWalletStore();
   const { toast } = useToast();
   const setIsLoading = useLoaderStore((state) => state.setIsLoading);
@@ -31,20 +21,20 @@ export const useInitializeEscrowHook = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       engagementId: "",
-      description: "",
-      serviceProvider: "",
-      amount: "",
     },
   });
 
   const onSubmit = async (payload: z.infer<typeof formSchema>) => {
-    const issuer = "GD2SVFOJO7C2RG6XUXCYUX4ODCWFNHVA3KCUH5W2Q4Y3HCNIRKU45VVY";
-    const payloadSubmit = { ...payload, signer: address, issuer };
+    const secretKey =
+      "SCMXDC4VK2ROZMUOPI7MZ7JE2PEQIVGQCPTJTM5FB3HW2QTRN2FZWZ3N";
+    const payloadSubmit = { ...payload, signer: address, secretKey };
 
     setIsLoading(true);
 
     try {
-      const { data } = await initializeEscrow(payloadSubmit);
+      const { data } = await fundEscrow(payloadSubmit);
+
+      console.log(data);
 
       if (data.status === "SUCCESS" || data.status === 201) {
         form.reset();
