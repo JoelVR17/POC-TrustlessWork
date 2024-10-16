@@ -1,4 +1,4 @@
-import { usePathname } from "next/navigation";
+import { usePathname } from "next/navigation"; // Importar usePathname
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -29,7 +29,7 @@ const ItemsHeader = ({ isEnabled }: ItemsHeaderProps) => {
               }
               passHref
             >
-              Initialize Escrow
+              Create Escrow
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
@@ -41,6 +41,52 @@ const ItemsHeader = ({ isEnabled }: ItemsHeaderProps) => {
               passHref
             >
               Fund Escrow
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link
+              href="/escrow/complete-escrow"
+              className={
+                isActive("/escrow/complete-escrow") ? "font-bold text-primary" : ""
+              }
+              passHref
+            >
+              Complete Escrow
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link
+              href="/escrow/cancel-escrow"
+              className={
+                isActive("/escrow/cancel-escrow") ? "font-bold text-primary" : ""
+              }
+              passHref
+            >
+              Cancel Escrow
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link
+              href="/escrow/refund-remaining-funds"
+              className={
+                isActive("/escrow/refund-remaining-funds") ? "font-bold text-primary" : ""
+              }
+              passHref
+            >
+              Refund remaining funds
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link
+              href="/escrow/get-engagement"
+              className={
+                isActive("/escrow/get-engagement")
+                  ? "font-bold text-primary"
+                  : ""
+              }
+              passHref
+            >
+              Get Engagement
             </Link>
           </NavigationMenuItem>
         </NavigationMenuList>
