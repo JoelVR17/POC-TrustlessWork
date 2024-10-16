@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write \"src/**/*.ts\""
   },
   "dependencies": {
     "@creit.tech/stellar-wallets-kit": "^1.2.1",
@@ -24,6 +25,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.447.0",
     "next": "14.2.14",
+    "prettier": "^3.3.3",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",

@@ -10,5 +10,5 @@ export const useLoaderStore = create<LoaderState>()(
   devtools((set) => ({
     isLoading: false,
     setIsLoading: (isLoading: boolean) => set({ isLoading }),
-  }))
+  })),
 );
