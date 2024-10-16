@@ -24,6 +24,19 @@ export function FundEscrowForm() {
       >
         <FormField
           control={form.control}
+          name="contractId"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Contract ID</FormLabel>
+              <FormControl>
+                <Input placeholder="Enter the contract id" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="engagementId"
           render={({ field }) => (
             <FormItem>

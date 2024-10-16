@@ -1,3 +1,5 @@
+import { kit } from "@/wallet/walletKit";
+import { WalletNetwork } from "@creit.tech/stellar-wallets-kit";
 import axios from "axios";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -13,10 +15,22 @@ interface EscrowPayload {
 export const initializeEscrow = async (payload: EscrowPayload) => {
   try {
     const response = await axios.post(
-      `${API_URL}/escrow/initialize-escrow`,
+      `${API_URL}/deployer/invoke-deployer-contract`,
       payload
     );
-    return response;
+    const { address } = await kit.getAddress()
+    const { signedTxXdr } = await kit.signTransaction(response.data, {
+      address,
+      networkPassphrase: WalletNetwork.TESTNET,
+    })
+    const tx = await axios.post(
+      `${API_URL}/helper/send-transaction`,
+      {
+        signedXdr: signedTxXdr
+      }
+    );
+    const { data } = tx;
+    return data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.error("Error:", error.message);

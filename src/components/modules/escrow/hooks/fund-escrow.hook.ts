@@ -7,8 +7,11 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const formSchema = z.object({
-  engagementId: z.string().min(5, {
+  contractId: z.string().min(1, {
     message: "Engagement must be at least 5 characters.",
+  }),
+  engagementId: z.string().min(1, {
+    message: "Engagement must be at least 1 characters.",
   }),
 });
 
@@ -20,21 +23,18 @@ export const useFundEscrowHook = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      contractId: "",
       engagementId: "",
     },
   });
 
   const onSubmit = async (payload: z.infer<typeof formSchema>) => {
-    const secretKey =
-      "SCMXDC4VK2ROZMUOPI7MZ7JE2PEQIVGQCPTJTM5FB3HW2QTRN2FZWZ3N";
-    const payloadSubmit = { ...payload, signer: address, secretKey };
+    const payloadSubmit = { ...payload, signer: address };
 
     setIsLoading(true);
 
     try {
       const { data } = await fundEscrow(payloadSubmit);
-
-      console.log(data);
 
       if (data.status === "SUCCESS" || data.status === 201) {
         form.reset();
