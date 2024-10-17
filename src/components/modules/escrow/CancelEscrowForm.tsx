@@ -39,7 +39,7 @@ export function CancelEscrowForm() {
   });
 
   const onSubmit = async (payload: z.infer<typeof formSchema>) => {
-    const data = { ...payload, signer: address };
+    const data = { ...payload, serviceProvider: address };
     await cancelEscrow(data);
   };
 

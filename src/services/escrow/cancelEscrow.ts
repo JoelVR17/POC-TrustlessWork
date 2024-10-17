@@ -8,7 +8,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 interface EscrowPayload {
   contractId: string;
   engagementId: string;
-  signer: string;
+  serviceProvider: string;
 }
 
 export const cancelEscrow = async (payload: EscrowPayload) => {
