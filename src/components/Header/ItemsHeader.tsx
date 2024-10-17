@@ -56,6 +56,17 @@ const ItemsHeader = ({ isEnabled }: ItemsHeaderProps) => {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <Link
+              href="/escrow/claim-escrow-earnings"
+              className={
+                isActive("/escrow/claim-escrow-earnings") ? "font-bold text-primary" : ""
+              }
+              passHref
+            >
+              Claim Escrow Earnings
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link
               href="/escrow/cancel-escrow"
               className={
                 isActive("/escrow/cancel-escrow") ? "font-bold text-primary" : ""

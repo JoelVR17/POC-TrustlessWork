@@ -2,7 +2,6 @@
 
 import { useWalletStore } from "@/store/walletStore";
 import { useWallet } from "@/wallet/hooks/useWallet.hook";
-import ThemeToggle from "./ThemeToggle";
 import { FaUserCircle } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,6 +12,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import ItemsHeader from "./ItemsHeader";
+import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   const { connectWallet, disconnectWallet } = useWallet();
